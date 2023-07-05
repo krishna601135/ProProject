@@ -12,6 +12,7 @@ router.post('/createBook',upload.single("image"), bookController.createBook)
 
 router.put('/updateDetails', bookController.updateDetails)
 router.delete('/deleteBook', bookController.deleteBook)
+router.post('/sendMail', bookController.sendEmail)
 
 module.exports = router;
 

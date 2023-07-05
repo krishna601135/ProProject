@@ -26,7 +26,7 @@ class BookController {
     // console.log(req.file)
     const file = req.file;
     const bImage = `${req.protocol}://${req.get("host")}/uploads/${file.originalname}`
-    console.log(typeof bImage)
+    console.log(bImage)
     const dirpath = path.resolve(__dirname,"..")
     const uploadDir = path.join(dirpath, 'uploads/');
     const filePath = path.join(uploadDir, file.originalname);
@@ -99,9 +99,12 @@ class BookController {
     }
   };
   sendEmail = async(req, res) => {
-  
-    // Create a transporter using SMTP
- const transporter = nodemailer.createTransport({
+  // Create a transporter using SMTP
+    const gmailId = req.body.gmailId
+    // const file = req.file;
+    const dirpath = path.resolve(__dirname,"..")
+    const uploadDir = path.join(dirpath, 'uploads/Screenshot from 2023-07-05 14-25-42.png');
+  const transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
     user: 'kakarapathikrishna@gmail.com',
@@ -111,22 +114,22 @@ class BookController {
 
  const mailOptions = {
   from: 'kakarapathikrishna@gmail.com',
-  to: '',
+  to: gmailId,
   subject: 'Sending an image using Nodemailer',
   text: 'Please see the attached image.',
   attachments: [
     {
       filename: 'image.jpg', // Change the filename as per your image file
-      path: '/path/to/your/image.jpg' // Replace with the actual path to your image file
+      path: uploadDir // Replace with the actual path to your image file
     }
   ]
 };
 
 transporter.sendMail(mailOptions, (error, info) => {
   if (error) {
-    console.log('Error occurred while sending email:', error);
+    res.send('Error occurred while sending email:', error);
   } else {
-    console.log('Email sent successfully!', info.response);
+    res.send('Email sent successfully!');
   }
 });
   }
