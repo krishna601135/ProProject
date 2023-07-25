@@ -19,7 +19,7 @@ jobs:
           node-version: '16.x'
 
       - name: Build Docker image
-        run: docker build -t murali601135/my-proproject-image .
+        run: docker build -t murali601135/my-proproject-image -f ./backend/DockerFile .
 
       # Log in to Docker Hub
       - name: mohan-richee
