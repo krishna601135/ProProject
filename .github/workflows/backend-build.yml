@@ -26,7 +26,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           username: murali601135
-          password: murali@601135
+          password: mohan@601135
 
       # Push the image to Docker Hub
       - name: Push image to Docker Hub
