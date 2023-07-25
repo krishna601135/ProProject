@@ -1,4 +1,4 @@
-name: Build and Deploy Docker Image
+name: Build and Deploy Docker Image For FrontEnd
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
           node-version: '16.x'
 
       - name: Build Docker image
-        run: docker build -t murali601135/my-proprojectFrontend-image -f ./frontend/DockerFile .
+        run: docker build -t murali601135/my-proprojectfrontend-image -f ./frontend/DockerFile .
 
       # Log in to Docker Hub
       - name: mohan-richee-frontend
@@ -30,4 +30,4 @@ jobs:
 
       # Push the image to Docker Hub
       - name: Push image to Docker Hub
-        run: docker push murali601135/my-proprojectFrontend-image
+        run: docker push murali601135/my-proprojectfrontend-image
